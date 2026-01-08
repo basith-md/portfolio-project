@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Basith - Photo Story</title>
+  <link rel="stylesheet" href="../../../../style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a192f;
+      color: #8892b0;
+    }
+
+    .section-title {
+      color: #64ffda;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      color: #ccd6f6;
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* Responsive grid for gallery items (larger cards to require scrolling)
+       Increased minimum column width so each card appears larger. */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 1.75rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 16px;
+      align-items: start;
+    }
+
+    /* Make cards fluid instead of fixed width/height */
+    .project-card {
+      background: rgba(2, 12, 27, 0.7);
+      border-radius: 10px;
+      padding: 22px;
+      margin: 0;
+      width: 100%;
+      min-height: 520px; /* enforce taller cards so fewer fit on screen */
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    /* Let the image container size naturally but keep a consistent frame */
+    .project-image {
+      width: 100%;
+      /* Taller framed thumbnails to make cards feel larger */
+      aspect-ratio: 4 / 3;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(2,12,27,0.25);
+      overflow: hidden;
+      margin-bottom: 16px;
+      border-radius: 8px;
+    }
+
+    /* Make images fill the frame (cover) so they expand into their boxes */
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* fill container while preserving aspect ratio */
+      object-position: center center;
+      border-radius: 6px;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-image img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+    }
+
+    /* Modal tweaks so enlarged image appears big and centered */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(10, 25, 47, 0.95);
+      padding: 20px;
+    }
+
+    .modal-content {
+      max-width: 95%;
+      max-height: 92vh;
+      margin: auto;
+      display: block;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(100, 255, 218, 0.2);
+      width: auto;
+      height: auto;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #64ffda;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #e6f1ff;
+    }
+
+    .nav-logo a {
+      color: #64ffda;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-logo a:hover {
+      color: #e6f1ff;
+    }
+
+    /* Small adjustments for very large screens */
+    @media (min-width: 1200px) {
+      .project-card {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo"><a href="../../../index.html">Back</a></div>
+    </div>
+  </nav>
+
+  <main class="section" style="padding-top:100px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">A Story In Photos</h2>
+        <p class="section-subtitle">Moments and milestones from my life and career</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Gallery Item 1 -->
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <img src="R1.jpeg" alt="Winning Startup Weekend Trichy">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Startup Weekend Trichy</h3>
+            <p class="project-description">Winning Startup Weekend Trichy - 2017</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-image">
+            <img src="R2.jpeg" alt="Thorogood Team">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Thorogood Team</h3>
+            <p class="project-description">My team in Thorogood Associates</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="project-image">
+            <img src="R3.jpg" alt="A hobby of mine">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Uni Band!</h3>
+            <p class="project-description">Love playing the guitar/making music</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="project-image">
+            <img src="R4.jpg" alt="New Gallery Image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">At the Minute Pitch Startup Competition - UMass Amherst</h3>
+            <p class="project-description">Pitching my Idea "Sweesh" at the Minute Pitch Competition </p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="project-image">
+            <img src="R5.jpg" alt="New Gallery Image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Trekking in the Himalayas</h3>
+            <p class="project-description">Another outdoorsy hobby of mine!</p>
+          </div>
+        </div>
+
+
+        <!-- Gallery Item 6 -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="project-image">
+            <img src="R6.jpeg" alt="New Gallery Image">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Lalpath Labs Delegation </h3>
+            <p class="project-description">Driving healthcare equity in rural India by leading diagnostic expansion projects at Lalpath Labs.</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Add Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
+  </div>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Image click handlers
+    document.querySelectorAll('.project-image img').forEach(img => {
+      img.onclick = function() {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      }
+    });
+
+    // Close modal
+    document.querySelector('.close').onclick = function() {
+      document.getElementById('imageModal').style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('imageModal').onclick = function(e) {
+      if (e.target == this) {
+        this.style.display = "none";
+      }
+    }
+
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  </script>
+</body>
+</html>
