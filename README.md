@@ -1,4 +1,4 @@
-# Basit Ali - Portfolio Website
+# Basith Mohamed - Portfolio Website
 
 A modern, responsive portfolio website showcasing data analytics expertise with clean design, smooth animations, and professional presentation.
 
