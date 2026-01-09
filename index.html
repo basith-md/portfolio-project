@@ -289,7 +289,7 @@
             <div class="footer-content">
                 <p>&copy; 2025 Basith Mohamed. All rights reserved.</p>
                 <p>Teehe</p>
-                <p class="visitor-count" style="margin-top:8px;color:#888">Visitors: <span id="visitor-count">—</span></p>
+                
             </div>
         </div>
     </footer>
@@ -299,17 +299,6 @@
     
         <!-- Custom JavaScript -->
         <script src="script.js"></script>
-        <script>
-        (function(){
-            // Anonymous visit counter using CountAPI (no personal data collected).
-            // Namespace/key: basith-portfolio / visits (public integer counter).
-            var el = document.getElementById('visitor-count');
-            if(!el) return;
-            fetch('https://api.countapi.xyz/hit/basith-portfolio/visits')
-                .then(function(r){ return r.json(); })
-                .then(function(data){ if(data && typeof data.value !== 'undefined'){ el.textContent = data.value; } })
-                .catch(function(){ el.textContent = '—'; });
-        })();
-        </script>
+        
 </body>
 </html>
