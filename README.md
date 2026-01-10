@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing data analytics expertise with 
 
 ## 🚀 Live Demo
 
-Visit the live website at: `https://<your-username>.github.io/<repo-name>/`
+Visit the live website at: `https://basith-md.github.io/portfolio/index.html`
 
 ## ✨ Features
 
